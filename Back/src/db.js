@@ -3,7 +3,8 @@ const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
 //? Models
-const CountryModel = require('./models/Country')
+const CountryModel = require('./models/Countries')
+const ActivityModel = require('./models/Activities')
 
 //? Connection to SQL
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
@@ -15,12 +16,14 @@ const sequelize = new Sequelize(
 
 //? Instances of models
 CountryModel(sequelize)
+ActivityModel(sequelize)
 
 //? Relations of models
-const { Country } = sequelize.models;
-
+const { Countries, Activities } = sequelize.models;
+Countries.belongsToMany(Activities, { through: 'countries_activities', timestamps: false })
+Activities.belongsToMany(Countries, { through: 'countries_activities', timestamps: false })
 
 module.exports = {
-  Country, 
-  conn: sequelize,     
+  ...sequelize.models,
+  connection: sequelize,     
 };

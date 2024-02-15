@@ -7,6 +7,7 @@ const router = require("./routes/routesIndex");
 
 //? Middlewares
 server.use(express.json());
+server.use(express.urlencoded({ extended: true }))
 server.use(morgan("dev"));
 server.use(cors());
 server.use((req, res, next) => {
@@ -22,6 +23,6 @@ server.use((req, res, next) => {
     )
     next()
 })
-server.use('/countries', router)
+server.use('/', router)
 
 module.exports = server;
