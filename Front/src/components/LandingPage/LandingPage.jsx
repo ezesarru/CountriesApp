@@ -1,8 +1,16 @@
+//? Styles
+import './LandingPage.css'
+
+//? Hooks
+import { Link } from "react-router-dom"
+
 const LandingPage = () => {
-    
+
     return(
-        <div>
-            <h1>Landing Page</h1>
+        <div className='landing-page'>
+            <Link to='/home' >
+                <button className='play-button'>¡PLAY!</button>
+            </Link>
         </div>
     )
 }

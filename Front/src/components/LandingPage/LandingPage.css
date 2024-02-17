@@ -1,0 +1,32 @@
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    background-image: url('../../../public/countries.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.play-button {
+    color: black;
+    border: 6px solid black;
+    padding: 5px 30px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco;
+    font-size: 50px;
+    cursor: pointer;
+    transition: ease-out 0.7s;
+}
+
+.play-button:hover {
+    box-shadow: inset 0 400px black;
+    color: white;
+    border: 6px solid silver;
+    font-size: 65px;
+    padding: 10px 25px;
+}
+
+
+

@@ -5,6 +5,7 @@ const getNoSpecificCountry = async (req, res) => {
     const { name } = req.query
 
     try {
+        
         if(!name) {
             return res.status(404).json({ message: 'Empty query' })
         }
