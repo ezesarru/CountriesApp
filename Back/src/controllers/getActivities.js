@@ -1,6 +1,6 @@
 const { Activities } = require('../db')
 
-const getAllActivities = async (req, res) => {
+const getActivities = async (req, res) => {
     try {
         const allActivities = await Activities.findAll()
         
@@ -16,4 +16,4 @@ const getAllActivities = async (req, res) => {
     }
 }
 
-module.exports = getAllActivities
+module.exports = getActivities

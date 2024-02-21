@@ -5,22 +5,36 @@ import './NavBar.css'
 import SearchBar from '../SearchBar/SearchBar'
 
 //? Hooks
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+//? Redux
+import { addCountries } from '../../redux/actionCreator'
+
 
 const NavBar = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
-    const createActivity = () => {
-        navigate('/createActivity')
+    const returnToHome = () => {
+        dispatch(addCountries())
+        navigate('/home')
     }
 
     return(
         <div className='nav-bar'>
+
             <h1>Countries SarruApp</h1>
-            <button onClick={createActivity}>Add Activity</button>
-            <h1>NavBar</h1>
-            <SearchBar />
+
+            <Link to={'/createActivity'}>
+                <button>Add Activity</button>
+            </Link>
+
+            <button onClick={ returnToHome }>Home</button>
+
+            <SearchBar/>
+
         </div>
     )
 }

@@ -5,28 +5,30 @@ import './Home.css'
 import Cards from '../Cards/Cards'
 
 //? Imports
-import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+//? Redux
+import { addCountries } from '../../redux/actionCreator'
+
 
 const Home = () => {
 
-    const [countries, setCountries] = useState([])
+    const dispatch = useDispatch()
+    const [countries, setCountries] = useState([]) 
+    const allCountries = useSelector((state) => state.allCountries)
+    
+    useEffect(() => {
+        dispatch(addCountries())
+    }, [])
 
     useEffect(() => {
-        (async () => {
-            try {
-                const { data } = await axios('http://localhost:3001/countries')
-                setCountries(data)
-            } catch (error) {
-                console.log(error)
-            }
-        })();
-    }, [])
-    
+        setCountries(allCountries)
+    }, [allCountries])
+
     return(
         <div className='home'>
-            <h1>Home</h1>
-            <Cards countries={countries} />
+            <Cards countries={ countries } />
         </div>
     )
 }

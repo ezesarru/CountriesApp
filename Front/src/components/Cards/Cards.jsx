@@ -4,12 +4,12 @@ import './Cards.css'
 //? Components
 import Card from '../Card/Card'
 
+
 const Cards = ({ countries }) => {
-    
+
     return(
         <div>
-        {
-            countries.map(
+            {countries.map(
                 ({ id, name, flag, continent, capital, subcontinent, area, population }) =>
                 <Card
                     key = {id}
@@ -22,8 +22,7 @@ const Cards = ({ countries }) => {
                     area = {area}
                     population = {population}
                 />
-            )
-        }
+            )}
         </div>
     )
 }

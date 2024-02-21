@@ -1,6 +1,6 @@
 const { Countries } = require('../db')
 
-const getAllCountries = async (req, res) => {
+const getCountries = async (req, res) => {
     try {
         const allCountries = await Countries.findAll()
         return res.status(200).json(allCountries)
@@ -11,4 +11,4 @@ const getAllCountries = async (req, res) => {
     }
 }
 
-module.exports = getAllCountries
+module.exports = getCountries

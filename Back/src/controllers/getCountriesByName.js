@@ -1,24 +1,23 @@
 const { Countries } = require ('../db')
 const { Op } = require('sequelize')
 
-const getNoSpecificCountry = async (req, res) => {
-    const { name } = req.query
+const getCountriesByName = async (req, res) => {
+    const { search } = req.query
 
     try {
-        
-        if(!name) {
+        if(!search) {
             return res.status(404).json({ message: 'Empty query' })
         }
 
         const countries = await Countries.findAll({
             where: {
                 name: {
-                    [Op.iLike]: `%${name}%`
+                    [Op.iLike]: `%${search}%`
                 }
             }
-        });
+        })
 
-        if(!countries || countries.length === 0){
+        if(!countries){
             return res.status(404).json({ message: 'Countries not found' })
         }
 
@@ -30,4 +29,4 @@ const getNoSpecificCountry = async (req, res) => {
     }
 }
 
-module.exports = getNoSpecificCountry
+module.exports = getCountriesByName
