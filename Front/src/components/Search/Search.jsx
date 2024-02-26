@@ -1,38 +1,26 @@
 //? Styles
-import './Search.css'
+import "./Search.css";
 
 //? Components
-import Cards from '../Cards/Cards'
+import Cards from "../Cards/Cards";
 
-//? Imports
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
-
-//? Redux
-import { addCountriesByName } from '../../redux/actionCreator'
-
+//? Hooks
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Search = () => {
+  const [countries, setCountries] = useState([]);
+  const selectedCountries = useSelector((state) => state.selectedCountries);
 
-    const { userInput } = useParams()
-    const dispatch = useDispatch()
-    const [countries, setCountries] = useState([]) 
-    const selectedCountries = useSelector((state) => state.selectedCountries)
-    
-    useEffect(() => {
-        dispatch(addCountriesByName(userInput))
-    }, [])
+  useEffect(() => {
+    setCountries(selectedCountries);
+  }, [selectedCountries]);
 
-    useEffect(() => {
-        setCountries(selectedCountries)
-    }, [selectedCountries])
-    
-    return(
-        <div className='search'>
-            <Cards countries={ countries } />
-        </div>
-    )
-}
+  return (
+    <div className="search">
+      <Cards countries={countries} />
+    </div>
+  );
+};
 
-export default Search 
+export default Search;
