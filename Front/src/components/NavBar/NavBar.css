@@ -3,17 +3,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   background-color: #000000;
   color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 .nav-bar button,
 .nav-bar select,
 .nav-bar input {
-  margin: 0 5px;
+  margin: 12px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .nav-bar h1 {

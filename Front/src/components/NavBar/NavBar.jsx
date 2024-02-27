@@ -18,21 +18,27 @@ const NavBar = () => {
     navigate("/home");
   };
 
-  const [userInput, setUserInput] = useState("");
-  const [continent, setContinent] = useState("All");
-  const [order, setOrder] = useState("ASC");
   const [orderType, setOrderType] = useState("name");
+  const [continent, setContinent] = useState("All");
+  const [userInput, setUserInput] = useState("");
+  const [order, setOrder] = useState("ASC");
+  const [seasonActivity, setSeasonActivity] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleChange = (event) => {
-    if (event.target.name === "Order") {
-      setOrder(event.target.value);
-      setOrderType(event.target.options[event.target.selectedIndex].id);
+    const { name, value, options, selectedIndex } = event.target;
+    if (name === "Order") {
+      setOrder(value);
+      setOrderType(options[selectedIndex].id);
     }
-    if (event.target.name === "Continent") {
-      setContinent(event.target.value);
+    if (name === "Continent") {
+      setContinent(value);
     }
-    if (event.target.name === "searchBar") {
-      setUserInput(event.target.value);
+    if (name === "searchBar") {
+      setUserInput(value);
+    }
+    if (name === "Season") {
+      setSeasonActivity(value); //!!!!!!!!!!
     }
   };
 
@@ -41,10 +47,9 @@ const NavBar = () => {
       dispatch(addCountriesByName(userInput, continent, order, orderType));
     }
     if (pathname === "/home") {
-      const pageNumber = 1; //! PAGINADO!!!
-      dispatch(addCountries(continent, order, orderType, pageNumber));
+      dispatch(addCountries(continent, order, orderType, currentPage));
     }
-  }, [continent, order, orderType]);
+  }, [continent, order, orderType, currentPage]);
 
   const onSearch = () => {
     if (!userInput) {
@@ -53,6 +58,14 @@ const NavBar = () => {
       dispatch(addCountriesByName(userInput, continent, order, orderType));
       navigate(`/search/${userInput}`);
     }
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const goToPreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
   };
 
   return (
@@ -89,6 +102,29 @@ const NavBar = () => {
         </option>
       </select>
 
+      <select name="Season" onChange={handleChange}>
+        <option value="">Activity Search</option>
+        <option id="spring" value="Spring">
+          Spring
+        </option>
+        <option id="summer" value="Summer">
+          Summer
+        </option>
+        <option id="autumn" value="Autumn">
+          Autumn
+        </option>
+        <option id="winter" value="Winter">
+          Winter
+        </option>
+      </select>
+
+      <button onClick={goToPreviousPage} disabled={currentPage <= 1}>
+        Previous Page
+      </button>
+      <span>Page number {currentPage}</span>
+      <button onClick={goToNextPage} disabled={currentPage >= 24}>
+        Next Page
+      </button>
       <input
         name="searchBar"
         type="search"
@@ -97,8 +133,6 @@ const NavBar = () => {
       />
 
       <button onClick={onSearch}>Search Countries</button>
-
-      <button>1</button>
     </div>
   );
 };
