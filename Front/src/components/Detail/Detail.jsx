@@ -1,52 +1,47 @@
 //? Styles
-import './Detail.css'
+import "./Detail.css";
 
 //? Hooks
-import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-//? Actions
-import { addCountryByID } from '../../redux/actionCreator'
-
+//? Redux
+import { addCountryByID } from "../../redux/actionCreator";
 
 const Detail = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const selectedCountry = useSelector((state) => state.selectedCountry);
+  const [country, setCountry] = useState([]);
 
-    const { id } = useParams()
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const selectedCountry = useSelector((state) => state.selectedCountry)
-    const [country, setCountry] = useState([])
-    
-    useEffect(() => {
-        dispatch(addCountryByID(id))
-    }, [])
-    
-    useEffect(() => {
-        setCountry(selectedCountry)   
-    }, [selectedCountry])
+  useEffect(() => {
+    dispatch(addCountryByID(id));
+  }, [id, dispatch]);
 
-    const returnToHome = () => {
-        navigate('/home')
-    }
-    
-    return(
-        <div className='Detail'>
+  useEffect(() => {
+    setCountry(selectedCountry);
+  }, [selectedCountry]);
 
-            <button onClick={ returnToHome }>Home</button>
-            <h1>Countries SarruApp</h1>
+  const returnToHome = () => {
+    navigate("/home");
+  };
 
-            <img src={ country.flag } alt={ country.name }/>
-            <h1>{ country.name }</h1>
-            <h3>ID: { country.id }</h3>
-            <h3>Capital: { country.capital }</h3>
-            <h3>Population: { country.population }</h3>
-            <h3>Area: { country.area }</h3>
-            <h3>Continent: { country.continent }</h3>
-            <h3>Subcontinent: { country.subcontinent }</h3>
+  return (
+    <div className="Detail">
+      <button onClick={returnToHome}>Home</button>
+      <h1>Countries SarruApp</h1>
+      <img src={country.flag} alt={country.name} />
+      <h1>{country.name}</h1>
+      <h3>ID: {country.id}</h3>
+      <h3>Capital: {country.capital}</h3>
+      <h3>Population: {country.population}</h3>
+      <h3>Area: {country.area}</h3>
+      <h3>Continent: {country.continent}</h3>
+      <h3>Subcontinent: {country.subcontinent}</h3>
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Detail 
+export default Detail;

@@ -24,11 +24,11 @@ const { Countries, Activities } = sequelize.models;
 CountriesActivities = sequelize.define("countries_activities");
 Countries.belongsToMany(Activities, {
   through: CountriesActivities,
-  timestamps: true,
+  timestamps: false,
 });
 Activities.belongsToMany(Countries, {
   through: CountriesActivities,
-  timestamps: true,
+  timestamps: false,
 });
 
 module.exports = {

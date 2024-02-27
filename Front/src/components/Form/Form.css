@@ -1,0 +1,38 @@
+.Form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border: 8px solid black;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.Form label {
+  font-size: 18px;
+}
+
+.Form input[type="text"] {
+  width: calc(100% - 50px);
+  padding: 10px;
+  font-size: 20px;
+}
+
+.Form select {
+  width: calc(100% - 30px);
+  padding: 5px;
+  font-size: 16px;
+}
+
+.Form button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 20px 50px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.Form button:hover {
+  background-color: #333;
+}

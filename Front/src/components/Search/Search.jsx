@@ -1,6 +1,3 @@
-//? Styles
-import "./Search.css";
-
 //? Components
 import Cards from "../Cards/Cards";
 

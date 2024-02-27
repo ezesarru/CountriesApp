@@ -1,0 +1,40 @@
+.Detail {
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 18px;
+  background-color: white;
+  border: 8px solid black;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.Detail h1 {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.Detail h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.Detail img {
+  width: 280px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border: 6px solid black;
+}
+
+.Detail button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.Detail button:hover {
+  background-color: #333;
+}

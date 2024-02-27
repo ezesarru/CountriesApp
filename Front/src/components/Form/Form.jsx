@@ -1,9 +1,14 @@
+//? Styles
+import "./Form.css";
+
 //? Hooks
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //? Utilities
 import { validation } from "./validation";
+
+//? Redux
 import {
   activityCreation,
   addCountriesToForm,
@@ -23,7 +28,7 @@ const Form = () => {
 
   useEffect(() => {
     dispatch(addCountriesToForm());
-  }, []);
+  }, [dispatch]);
 
   const [errors, setErrors] = useState({
     name: "Your activity needs a name",
@@ -58,7 +63,7 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className="Form">
       <form onSubmit={handleSubmit}>
         <br />
         <label>Name: </label>

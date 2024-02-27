@@ -1,0 +1,30 @@
+.card-container {
+  width: 200px;
+  padding: 15px;
+  margin: 10px;
+  background-color: white;
+  border: 8px solid black;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.card-container img {
+  width: calc(100% - 25px);
+  height: auto;
+  display: block;
+  margin: 0 auto 5px;
+  border: 6px solid black;
+}
+
+.card-container h1,
+.card-container h3 {
+  color: black;
+}
+
+.card-container h1 {
+  font-size: 30px;
+}
+
+.card-container h3 {
+  font-size: 18px;
+}

@@ -1,6 +1,3 @@
-//? Styles
-import "./App.css";
-
 //? Hooks
 import { Routes, Route, useLocation } from "react-router-dom";
 

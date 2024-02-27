@@ -2,11 +2,11 @@
 import "./NavBar.css";
 
 //? Hooks
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
 
 //? Redux
+import { useDispatch } from "react-redux";
 import { addCountries, addCountriesByName } from "../../redux/actionCreator";
 
 const NavBar = () => {

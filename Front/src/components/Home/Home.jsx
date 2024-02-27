@@ -1,10 +1,7 @@
-//? Styles
-import "./Home.css";
-
 //? Components
 import Cards from "../Cards/Cards";
 
-//? Imports
+//? Hooks
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -18,7 +15,7 @@ const Home = () => {
   }, [allCountries]);
 
   return (
-    <div className="home">
+    <div>
       <Cards countries={countries} />
     </div>
   );

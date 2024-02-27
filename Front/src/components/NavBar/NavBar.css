@@ -1,0 +1,21 @@
+.nav-bar {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+
+.nav-bar button,
+.nav-bar select,
+.nav-bar input {
+  margin: 0 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.nav-bar h1 {
+  margin: 0;
+}
