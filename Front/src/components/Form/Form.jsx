@@ -59,7 +59,7 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(activityCreation(userData));
-    console.log(userData);
+    alert("Activity Created!");
   };
 
   return (
