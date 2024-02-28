@@ -4,10 +4,17 @@ import {
   ADD_COUNTRIES_TO_FORM,
   ADD_COUNTRY_BY_ID,
   ACTIVITY_CREATION,
+  ACTIVITY_SEARCH,
 } from "./actionsTypes";
 import axios from "axios";
 
-export const addCountries = (continent, order, orderType, pageNumber) => {
+export const addCountries = (
+  continent,
+  order,
+  orderType,
+  pageNumber,
+  season
+) => {
   // Home y NavBar
   return async (dispatch) => {
     try {
@@ -17,6 +24,7 @@ export const addCountries = (continent, order, orderType, pageNumber) => {
           order,
           orderType,
           pageNumber,
+          season,
         },
       });
 
@@ -110,6 +118,21 @@ export const activityCreation = ({
 
       return dispatch({
         type: ACTIVITY_CREATION,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
+export const activitySearch = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios("http://localhost:3001/activities");
+
+      return dispatch({
+        type: ACTIVITY_SEARCH,
         payload: data,
       });
     } catch (error) {

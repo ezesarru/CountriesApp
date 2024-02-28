@@ -7,7 +7,11 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 //? Redux
 import { useDispatch } from "react-redux";
-import { addCountries, addCountriesByName } from "../../redux/actionCreator";
+import {
+  addCountries,
+  addCountriesByName,
+  activitySearch,
+} from "../../redux/actionCreator";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -22,7 +26,7 @@ const NavBar = () => {
   const [continent, setContinent] = useState("All");
   const [userInput, setUserInput] = useState("");
   const [order, setOrder] = useState("ASC");
-  const [seasonActivity, setSeasonActivity] = useState("");
+  const [season, setSeason] = useState("Any");
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleChange = (event) => {
@@ -38,7 +42,7 @@ const NavBar = () => {
       setUserInput(value);
     }
     if (name === "Season") {
-      setSeasonActivity(value); //!!!!!!!!!!
+      setSeason(value);
     }
   };
 
@@ -47,9 +51,9 @@ const NavBar = () => {
       dispatch(addCountriesByName(userInput, continent, order, orderType));
     }
     if (pathname === "/home") {
-      dispatch(addCountries(continent, order, orderType, currentPage));
+      dispatch(addCountries(continent, order, orderType, currentPage, season));
     }
-  }, [continent, order, orderType, currentPage]);
+  }, [continent, order, orderType, currentPage, season]);
 
   const onSearch = () => {
     if (!userInput) {
@@ -103,17 +107,18 @@ const NavBar = () => {
       </select>
 
       <select name="Season" onChange={handleChange}>
-        <option value="">Activity Search</option>
-        <option id="spring" value="Spring">
+        <option value="Any">Search Activities</option>
+        <option value="All">All Seasons</option>
+        <option id="Spring" value="Spring">
           Spring
         </option>
-        <option id="summer" value="Summer">
+        <option id="Summer" value="Summer">
           Summer
         </option>
-        <option id="autumn" value="Autumn">
+        <option id="Autumn" value="Autumn">
           Autumn
         </option>
-        <option id="winter" value="Winter">
+        <option id="Winter" value="Winter">
           Winter
         </option>
       </select>

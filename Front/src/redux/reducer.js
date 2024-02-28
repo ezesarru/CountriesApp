@@ -4,6 +4,7 @@ import {
   ADD_COUNTRY_BY_ID,
   ADD_COUNTRIES_TO_FORM,
   ACTIVITY_CREATION,
+  ACTIVITY_SEARCH,
 } from "./actionsTypes";
 
 const initialState = {
@@ -40,6 +41,11 @@ const reducer = (state = initialState, { type, payload }) => {
       };
 
     case ACTIVITY_CREATION:
+      return {
+        ...state,
+      };
+
+    case ACTIVITY_SEARCH:
       return {
         ...state,
       };
