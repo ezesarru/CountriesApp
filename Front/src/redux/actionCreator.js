@@ -108,6 +108,7 @@ export const activityCreation = ({
   // Form
   return async (dispatch) => {
     try {
+      console.log(countries.join(" "));
       const { data } = await axios.post("http://localhost:3001/activities", {
         cca3: countries.join(" "),
         name,

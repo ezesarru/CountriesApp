@@ -3,7 +3,7 @@ const { Activities, CountriesActivities } = require("../db");
 const postActivity = async (req, res) => {
   try {
     const { cca3, name, difficulty, duration, season } = req.body; //* cca3 = ARG, BRZ, URU
-    const formattedCCA3 = cca3.split(", "); //* formatedCCA3 = [ARG, BRZ, URU]
+    const formattedCCA3 = cca3.split(" "); //* formatedCCA3 = [ARG, BRZ, URU]
 
     if (formattedCCA3 && name && difficulty && duration && season) {
       const [newActivity] = await Activities.findOrCreate({
