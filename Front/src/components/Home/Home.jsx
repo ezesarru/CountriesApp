@@ -3,10 +3,9 @@ import Cards from "../Cards/Cards";
 
 //? Hooks
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const dispatch = useDispatch();
   const [countries, setCountries] = useState([]);
   const allCountries = useSelector((state) => state.allCountries);
 

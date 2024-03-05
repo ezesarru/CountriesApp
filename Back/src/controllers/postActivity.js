@@ -2,12 +2,13 @@ const { Activities, CountriesActivities } = require("../db");
 
 const postActivity = async (req, res) => {
   try {
-    const { cca3, name, difficulty, duration, season } = req.body; //* cca3 = ARG, BRZ, URU
+    const { cca3, name, difficulty, duration, season, price } = req.body; //* cca3 = ARG BRZ URU
+    console.log(price);
     const formattedCCA3 = cca3.split(" "); //* formatedCCA3 = [ARG, BRZ, URU]
 
-    if (formattedCCA3 && name && difficulty && duration && season) {
+    if (formattedCCA3 && name && difficulty && duration && season && price) {
       const [newActivity] = await Activities.findOrCreate({
-        where: { name, difficulty, duration, season },
+        where: { name, difficulty, duration, season, price },
       });
 
       for (const cca3 of formattedCCA3) {

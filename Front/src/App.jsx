@@ -18,8 +18,7 @@ const App = () => {
     <div>
       {(pathname === "/home" ||
         pathname === "/createActivity" ||
-        pathname.includes("/search")) && <NavBar />}
-
+        pathname.includes("/search")) && <NavBar />}{" "}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
